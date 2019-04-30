@@ -13,6 +13,13 @@ Import coreproc.audio.soundmanager
 #SOUND_FILES="*.mp3"
 #MUSIC_FILES="*.mp3"
 
+#GLFW_WINDOW_WIDTH=960
+#GLFW_WINDOW_HEIGHT=540
+#GLFW_WINDOW_DECORATED=1
+#GLFW_WINDOW_FLOATING=1
+#GLFW_WINDOW_FULLSCREEN=false
+
+
 Global app:CoreApp
 
 Class MapFlags
@@ -75,7 +82,7 @@ Class Player
     Const ANIM_SPEED_IDLE := 0.1
     Const ANIM_SPEED_RUN := 0.2
     Const ANIM_SPEED_JUMP := 1.0
-    Const ANIM_SPEED_FALL := 0.1
+    Const ANIM_SPEED_FALL := 0.2
 
     Const STATE_FALLING := 1
     Const STATE_IDLE := 2
@@ -114,7 +121,7 @@ Class Player
     Field instaDeath?
 
     Method New()
-        boundingBox.w = 11
+        boundingBox.w = 9
         boundingBox.h = 15
     End
 End
@@ -139,32 +146,17 @@ Class Resources
             SoundManager.Load("sfx/laser")
             SoundManager.Load("sfx/stomp")
 
-            SoundManager.SetDelay("sfx/collect", 250)
+            SoundManager.SetDelay("sfx/collect", 50)
             SoundManager.SetDelay("sfx/enemy_hit", 50)
             SoundManager.SetDelay("sfx/explosion", 100)
             SoundManager.SetDelay("sfx/jump", 100)
             SoundManager.SetDelay("sfx/laser", 50)
             SoundManager.SetDelay("sfx/stomp", 50)
-
-            ' SoundManager.PlaySfx("sfx/1")
-            ' SoundManager.PlaySfx("sfx/2")
-            ' SoundManager.PlaySfx("sfx/3")
-            
-            
-            SoundManager.PlaySfx("sfx/stomp")
         End
     End
 
     Function DrawText:Void(text$, x#, y#, alignX# = 0.5, alignY# = 0.5)
-        ' font.DrawString(text, x-1, y-1, alignX, alignY)
-        ' font.DrawString(text, x+1, y-1, alignX, alignY)
-        ' font.DrawString(text, x-1, y, alignX, alignY)
-        ' font.DrawString(text, x+1, y, alignX, alignY)
-        ' font.DrawString(text, x-1, y+1, alignX, alignY)
-        ' font.DrawString(text, x+1, y+1, alignX, alignY)
-        ' canvas.SetColor(44 / 256.0, 214 / 256.0, 0.0, 1.0)
         font.DrawString(text, x, y, alignX, alignY)
-        ' canvas.SetColor(1.0, 1.0, 1.0, 1.0)
     End
 End
 
@@ -350,6 +342,7 @@ Class Enemy
                 e.lifeBonus = ExtraTime.Add(0, 0)
                 e.lifeBonus.lifeBonus = 60 * 25
                 e.lifeBonus.active = False
+                e.lifeBonus.sprite = ExtraTime.sprites
         End
 
         e.boundingBox.x = x - e.boundingBox.w / 2.0
@@ -362,7 +355,7 @@ Class Enemy
             If (e.active = False) Then Continue
             e.frame += e.animSpeed
 
-            If (Rect.Intersect(player.boundingBox, e.boundingBox))
+            If (Rect.Intersect(player.boundingBox, e.boundingBox) And player.state <> Player.STATE_DIED)
                 player.instaDeath = True
             End
 
@@ -546,6 +539,7 @@ End
 
 Class ExtraTime
     Global sprites:Sprite[]
+    Global spritesSmall:Sprite[]
     Global slot:ExtraTime[]
     
     Const SPEED := 0.25
@@ -556,9 +550,11 @@ Class ExtraTime
     Field dy#
     Field fallSpeed#
     Field lifeBonus#
+    Field sprite:Sprite[]
 
-    Function Init(s:Sprite[])
-        sprites = s
+    Function Init()
+        sprites = GetSpriteAnimation(Resources.sprites.frames, "extra_time_{n1}.png")
+        spritesSmall = GetSpriteAnimation(Resources.sprites.frames, "extra_time_small_{n1}.png")
         slot = slot.Resize(0)
     End
 
@@ -572,6 +568,7 @@ Class ExtraTime
         nextSlot.active = True
         nextSlot.fallSpeed = Rnd(0.1, 0.3)
         nextSlot.lifeBonus = 60 * 5
+        nextSlot.sprite = spritesSmall
         Return nextSlot
     End
 
@@ -623,8 +620,7 @@ Class ExtraTime
                         If (startY = endY) Then Exit
                     End
                 End
-
-                DrawSprite(sprites[s.frame Mod sprites.Length], s.boundingBox.x + s.boundingBox.w / 2.0, s.boundingBox.y + s.boundingBox.h / 2.0)
+                DrawSprite(s.sprite[s.frame Mod s.sprite.Length], s.boundingBox.x + s.boundingBox.w / 2.0, s.boundingBox.y + s.boundingBox.h / 2.0)
             End
         Next
     End
@@ -826,7 +822,7 @@ Class Explosion
 End
 
 Class GameScene Implements Scene
-    Const LEVEL_COUNT := 2
+    Const LEVEL_COUNT := 3
     Field level:Level
     Field player:Player
     Field fader#
@@ -853,7 +849,7 @@ Class GameScene Implements Scene
         For Local i := 0 Until Player.ANIM_COUNT
             Local sprite := player.sprite[i]
             For Local j := 0 Until sprite.Length()
-                sprite[j].handleY = 0
+                 sprite[j].handleY -= player.boundingBox.h / 2.0 + 4.0
             Next
         Next
 
@@ -861,13 +857,17 @@ Class GameScene Implements Scene
         ' Start Level
         InitLevel(0)
 
-        SoundManager.globalSfxVolume = 0.20
+        #if TARGET="glfw"
+            SoundManager.globalSfxVolume = 0.80
+        #else
+            SoundManager.globalSfxVolume = 0.20
+        #end
     End   
 
     Method InitLevel(lvl%)
         level.currentLevel = lvl
         readyTimer = 60 * 3 + 1
-        ExtraTime.Init(GetSpriteAnimation(Resources.sprites.frames, "extra_time_{n1}.png"))
+        ExtraTime.Init()
         Enemy.Clear()
         gameOverTimer = 0
         fader = 1.0
@@ -924,6 +924,7 @@ Class GameScene Implements Scene
 
     Method Execute:Void()
         canvas.PushMatrix()
+        canvas.Clear(0.0, 0.0, 0.0, 1.0)
         Local ox := 0.0, oy := 0.0
         If (shakeTimer > 0)
             shakeTimer -= 1
@@ -975,7 +976,7 @@ Class GameScene Implements Scene
         canvas.PushMatrix()
         canvas.Translate(level.x, level.y)        
 
-
+        Local oldPlayerState := player.state
         If (player.state <> Player.STATE_DIED And player.state <> Player.STATE_LEVEL_COMPLETED And player.timeRunning)
             ' Update Player
 
@@ -987,7 +988,6 @@ Class GameScene Implements Scene
                 If (KeyHit(KEY_UP)) Then SoundManager.PlaySfx("sfx/jump", Rnd(0.8, 1.0))
 
                 player.jumpVelo = Max(0.0, player.jumpVelo * 0.78)
-    ''            Print player.jumpVelo
                 player.dy -= player.jumpVelo
                 player.jumpFrame += 1
             Else
@@ -1044,6 +1044,8 @@ Class GameScene Implements Scene
                 Wend
             End
 
+            player.boundingBox.y = Floor(player.boundingBox.y + 0.5)
+
             ' LEFT/RIGHT
             ' Run Treshold
             If (Not KeyDown(KEY_LEFT) And Not KeyDown(KEY_RIGHT))
@@ -1055,12 +1057,12 @@ Class GameScene Implements Scene
             If (KeyDown(KEY_LEFT))
                 player.direction = -1.0
                 player.dx -= Player.MOVE_ACCELERATION
-                If (player.state <> Player.STATE_FALLING) Then player.state = Player.STATE_RUNNING
+                If (player.state <> Player.STATE_FALLING And player.state <> Player.STATE_JUMP) Then player.state = Player.STATE_RUNNING
             Else If (KeyDown(KEY_RIGHT))
                 player.direction = 1.0
                 player.dx += Player.MOVE_ACCELERATION
-                If (player.state <> Player.STATE_FALLING) Then player.state = Player.STATE_RUNNING
-            Else If (player.dx <> 0.0 And player.state <> Player.STATE_FALLING) 
+                If (player.state <> Player.STATE_FALLING And player.state <> Player.STATE_JUMP) Then player.state = Player.STATE_RUNNING
+            Else If (player.dx <> 0.0 And player.state <> Player.STATE_FALLING And player.state <> Player.STATE_JUMP) 
                 player.state = Player.STATE_RUNNING
             End
 
@@ -1105,17 +1107,19 @@ Class GameScene Implements Scene
 
         End
 
-
         ExtraTime.UpdateAndRender(level, player)
         Enemy.UpdateAndRender(level, player, PlayerBullet.slot, Self)
         Particle.UpdateAndRender(level)
 
         Local px := player.boundingBox.x + player.boundingBox.w / 2.0
         Local py := player.boundingBox.y + player.boundingBox.h
+
         Select player.state            
             Case Player.STATE_FALLING
-                player.frame += Player.ANIM_SPEED_FALL
-                DrawSprite(canvas, player.sprite[Player.ANIM_FALL][player.frame Mod player.sprite[Player.ANIM_FALL].Length], px, py, 0.0, player.direction)
+                If (oldPlayerState <> Player.STATE_FALLING) Then player.frame = 0
+                player.frame = Min(player.frame + Player.ANIM_SPEED_FALL, Float(player.sprite[Player.ANIM_FALL].Length-1))
+
+                DrawSprite(canvas, player.sprite[Player.ANIM_FALL][player.frame], px, py, 0.0, player.direction)
 
             Case Player.STATE_RUNNING
                 player.frame += Player.ANIM_SPEED_RUN
@@ -1154,8 +1158,9 @@ Class GameScene Implements Scene
         PlayerBullet.UpdateAndRender(level)
         Explosion.UpdateAndRender()
 
-
-''        DrawBox(canvas, player.boundingBox)
+        ' canvas.SetColor(1.0,0.0,0.0)
+        ' DrawBox(canvas, player.boundingBox)
+        ' canvas.SetColor(1.0,1.0,1.0)
 
         canvas.PopMatrix()
 

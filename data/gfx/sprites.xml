@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:d5f89ae0bbd853e702645b7a876dbaee:ddfc6e2f9f7250ad20c20af03d60e20a:a3c246832ea35f0bdda766159aff8361$ -->
+<!-- $TexturePacker:SmartUpdate:902d528c0fd327b821111a60195010ec:adf02fc6c86fa2bc8f804d389c21d2bd:a3c246832ea35f0bdda766159aff8361$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -15,47 +15,50 @@ oW => sprite's original width (only available if trimmed)
 oH => sprite's original height (only available if trimmed)
 r => 'y' only set if sprite is rotated
 -->
-<TextureAtlas imagePath="sprites.png" width="425" height="22">
-    <sprite n="crawler_1.png" x="71" y="2" w="10" h="17" pX="0.5" pY="0.5" oX="1" oY="0" oW="12" oH="17"/>
-    <sprite n="crawler_2.png" x="57" y="2" w="12" h="17" pX="0.5" pY="0.5"/>
-    <sprite n="explosion_1.png" x="83" y="2" w="16" h="16" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
-    <sprite n="explosion_2.png" x="301" y="2" w="13" h="13" pX="0.5" pY="0.5" oX="4" oY="3" oW="20" oH="18"/>
-    <sprite n="explosion_3.png" x="316" y="2" w="13" h="13" pX="0.5" pY="0.5" oX="4" oY="3" oW="20" oH="18"/>
-    <sprite n="explosion_4.png" x="224" y="2" w="15" h="15" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
-    <sprite n="explosion_5.png" x="101" y="2" w="16" h="16" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
-    <sprite n="explosion_6.png" x="22" y="2" w="17" h="17" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
-    <sprite n="explosion_7.png" x="2" y="2" w="18" h="18" pX="0.5" pY="0.5" oX="2" oY="0" oW="20" oH="18"/>
-    <sprite n="explosion_8.png" x="331" y="2" w="13" h="11" pX="0.5" pY="0.5" oX="6" oY="6" oW="20" oH="18"/>
-    <sprite n="extra_time_1.png" x="355" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_10.png" x="365" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_11.png" x="355" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_12.png" x="355" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_2.png" x="365" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_3.png" x="369" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_4.png" x="375" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_5.png" x="379" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_6.png" x="385" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_7.png" x="379" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_8.png" x="375" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="extra_time_9.png" x="369" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
-    <sprite n="particles_1.png" x="285" y="17" w="3" h="3" pX="0.5" pY="0.5" oX="1" oY="1" oW="4" oH="4"/>
-    <sprite n="particles_2.png" x="416" y="10" w="3" h="4" pX="0.5" pY="0.5" oX="1" oY="0" oW="4" oH="4"/>
-    <sprite n="particles_3.png" x="389" y="2" w="4" h="4" pX="0.5" pY="0.5"/>
-    <sprite n="player_bullet_1.png" x="395" y="10" w="8" h="8" pX="0.5" pY="0.5" oX="14" oY="2" oW="28" oH="12"/>
-    <sprite n="player_bullet_2.png" x="405" y="10" w="9" h="6" pX="0.5" pY="0.5" oX="14" oY="3" oW="28" oH="12"/>
-    <sprite n="player_bullet_3.png" x="346" y="2" w="21" h="8" pX="0.5" pY="0.5" oX="7" oY="2" oW="28" oH="12"/>
-    <sprite n="player_bullet_4.png" x="395" y="2" w="28" h="6" pX="0.5" pY="0.5" oX="0" oY="3" oW="28" oH="12"/>
-    <sprite n="player_bullet_5.png" x="331" y="15" w="22" h="4" pX="0.5" pY="0.5" oX="6" oY="4" oW="28" oH="12"/>
-    <sprite n="player_fall_1.png" x="119" y="2" w="16" h="16" pX="0.5" pY="0.5" oX="1" oY="1" oW="19" oH="17"/>
-    <sprite n="player_fall_2.png" x="203" y="2" w="19" h="15" pX="0.5" pY="0.5" oX="0" oY="2" oW="19" oH="17"/>
-    <sprite n="player_idle_1.png" x="151" y="2" w="11" h="16" pX="0.5" pY="0.5" oX="4" oY="1" oW="19" oH="17"/>
-    <sprite n="player_idle_2.png" x="164" y="2" w="11" h="16" pX="0.5" pY="0.5" oX="4" oY="1" oW="19" oH="17"/>
-    <sprite n="player_idle_3.png" x="177" y="2" w="11" h="16" pX="0.5" pY="0.5" oX="4" oY="1" oW="19" oH="17"/>
-    <sprite n="player_idle_4.png" x="190" y="2" w="11" h="16" pX="0.5" pY="0.5" oX="4" oY="1" oW="19" oH="17"/>
-    <sprite n="player_jump_1.png" x="41" y="2" w="14" h="17" pX="0.5" pY="0.5" oX="3" oY="0" oW="19" oH="17"/>
-    <sprite n="player_run_1.png" x="241" y="2" w="14" h="14" pX="0.5" pY="0.5" oX="2" oY="3" oW="19" oH="17"/>
-    <sprite n="player_run_2.png" x="257" y="2" w="12" h="14" pX="0.5" pY="0.5" oX="4" oY="2" oW="19" oH="17"/>
-    <sprite n="player_run_3.png" x="285" y="2" w="14" h="13" pX="0.5" pY="0.5" oX="2" oY="2" oW="19" oH="17"/>
-    <sprite n="player_run_4.png" x="137" y="2" w="12" h="16" pX="0.5" pY="0.5" oX="4" oY="1" oW="19" oH="17"/>
-    <sprite n="player_run_5.png" x="271" y="2" w="12" h="14" pX="0.5" pY="0.5" oX="4" oY="2" oW="19" oH="17"/>
+<TextureAtlas imagePath="sprites.png" width="472" height="27">
+    <sprite n="crawler_1.png" x="419" y="2" w="10" h="17" pX="0.5" pY="0.5" oX="1" oY="0" oW="12" oH="17"/>
+    <sprite n="crawler_2.png" x="405" y="2" w="12" h="17" pX="0.5" pY="0.5"/>
+    <sprite n="explosion_1.png" x="245" y="2" w="16" h="16" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
+    <sprite n="explosion_2.png" x="375" y="12" w="13" h="13" pX="0.5" pY="0.5" oX="4" oY="3" oW="20" oH="18"/>
+    <sprite n="explosion_3.png" x="390" y="12" w="13" h="13" pX="0.5" pY="0.5" oX="4" oY="3" oW="20" oH="18"/>
+    <sprite n="explosion_4.png" x="345" y="2" w="15" h="15" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
+    <sprite n="explosion_5.png" x="263" y="2" w="16" h="16" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
+    <sprite n="explosion_6.png" x="226" y="2" w="17" h="17" pX="0.5" pY="0.5" oX="2" oY="1" oW="20" oH="18"/>
+    <sprite n="explosion_7.png" x="206" y="2" w="18" h="18" pX="0.5" pY="0.5" oX="2" oY="0" oW="20" oH="18"/>
+    <sprite n="explosion_8.png" x="431" y="2" w="13" h="11" pX="0.5" pY="0.5" oX="6" oY="6" oW="20" oH="18"/>
+    <sprite n="extra_time_1.png" x="385" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_10.png" x="395" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_11.png" x="385" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_12.png" x="385" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_2.png" x="395" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_3.png" x="431" y="15" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_4.png" x="441" y="15" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_5.png" x="446" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_6.png" x="451" y="12" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_7.png" x="446" y="2" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_8.png" x="441" y="15" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_9.png" x="431" y="15" w="8" h="8" pX="0.5" pY="0.5"/>
+    <sprite n="extra_time_small_1.png" x="250" y="20" w="4" h="4" pX="0.5" pY="0.5" oX="2" oY="3" oW="8" oH="8"/>
+    <sprite n="particles_1.png" x="64" y="22" w="3" h="3" pX="0.5" pY="0.5" oX="1" oY="1" oW="4" oH="4"/>
+    <sprite n="particles_2.png" x="262" y="20" w="3" h="4" pX="0.5" pY="0.5" oX="1" oY="0" oW="4" oH="4"/>
+    <sprite n="particles_3.png" x="256" y="20" w="4" h="4" pX="0.5" pY="0.5"/>
+    <sprite n="player_bullet_1.png" x="456" y="2" w="8" h="8" pX="0.5" pY="0.5" oX="14" oY="2" oW="28" oH="12"/>
+    <sprite n="player_bullet_2.png" x="461" y="12" w="9" h="6" pX="0.5" pY="0.5" oX="14" oY="3" oW="28" oH="12"/>
+    <sprite n="player_bullet_3.png" x="362" y="2" w="21" h="8" pX="0.5" pY="0.5" oX="7" oY="2" oW="28" oH="12"/>
+    <sprite n="player_bullet_4.png" x="345" y="19" w="28" h="6" pX="0.5" pY="0.5" oX="0" oY="3" oW="28" oH="12"/>
+    <sprite n="player_bullet_5.png" x="226" y="21" w="22" h="4" pX="0.5" pY="0.5" oX="6" oY="4" oW="28" oH="12"/>
+    <sprite n="player_fall_1.png" x="128" y="2" w="18" h="19" pX="0.5" pY="0.5" oX="4" oY="2" oW="28" oH="24"/>
+    <sprite n="player_fall_2.png" x="148" y="2" w="18" h="19" pX="0.5" pY="0.5" oX="4" oY="2" oW="28" oH="24"/>
+    <sprite n="player_fall_3.png" x="2" y="2" w="19" h="23" pX="0.5" pY="0.5" oX="4" oY="1" oW="28" oH="24"/>
+    <sprite n="player_idle_1.png" x="281" y="2" w="15" h="19" pX="0.5" pY="0.5" oX="6" oY="5" oW="28" oH="24"/>
+    <sprite n="player_idle_2.png" x="298" y="2" w="15" h="19" pX="0.5" pY="0.5" oX="6" oY="5" oW="28" oH="24"/>
+    <sprite n="player_idle_3.png" x="168" y="2" w="17" h="20" pX="0.5" pY="0.5" oX="5" oY="4" oW="28" oH="24"/>
+    <sprite n="player_idle_4.png" x="108" y="2" w="18" h="20" pX="0.5" pY="0.5" oX="4" oY="4" oW="28" oH="24"/>
+    <sprite n="player_idle_5.png" x="87" y="2" w="19" h="19" pX="0.5" pY="0.5" oX="4" oY="5" oW="28" oH="24"/>
+    <sprite n="player_jump_1.png" x="44" y="2" w="18" h="21" pX="0.5" pY="0.5" oX="5" oY="3" oW="28" oH="24"/>
+    <sprite n="player_run_1.png" x="331" y="2" w="12" h="20" pX="0.5" pY="0.5" oX="10" oY="4" oW="28" oH="24"/>
+    <sprite n="player_run_2.png" x="187" y="2" w="17" h="20" pX="0.5" pY="0.5" oX="7" oY="4" oW="28" oH="24"/>
+    <sprite n="player_run_3.png" x="64" y="2" w="21" h="18" pX="0.5" pY="0.5" oX="4" oY="3" oW="28" oH="24"/>
+    <sprite n="player_run_4.png" x="23" y="2" w="19" h="20" pX="0.5" pY="0.5" oX="5" oY="4" oW="28" oH="24"/>
+    <sprite n="player_run_5.png" x="315" y="2" w="14" h="19" pX="0.5" pY="0.5" oX="8" oY="5" oW="28" oH="24"/>
 </TextureAtlas>
